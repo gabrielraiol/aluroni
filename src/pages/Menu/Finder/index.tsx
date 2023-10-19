@@ -14,6 +14,7 @@ export default function Finder({search, setSearch}: Props) {
             onChange={(event) =>
               setSearch (event.target.value)
             }
+            placeholder="Buscar"
         />
         < CgSearch
             size={20}
