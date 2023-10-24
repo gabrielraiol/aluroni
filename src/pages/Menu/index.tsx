@@ -4,6 +4,7 @@ import Finder from "./Finder";
 import { useState} from "react";
 import Filters from "./Filters";
 import Computer from "./Computer";
+import Items from "./Items";
 
 export default function Menu() {
 
@@ -28,6 +29,7 @@ export default function Menu() {
                     <Filters filter={filter} setFilter={setFilter} />
                     <Computer computer={computer} setComputer={setComputer}/>
                 </div>
+                <Items />
             </section>
         </main>
     )
