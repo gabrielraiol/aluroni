@@ -29,7 +29,7 @@ export default function Menu() {
                     <Filters filter={filter} setFilter={setFilter} />
                     <Computer computer={computer} setComputer={setComputer}/>
                 </div>
-                <Items />
+                <Items search = {search} filter = {filter} computer = {computer}/>
             </section>
         </main>
     )
