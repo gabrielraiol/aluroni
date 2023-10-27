@@ -12,23 +12,23 @@ type Ichoice = typeof filters[0]
 
 export default function Filters({filter, setFilter}: Props) {
 
-    function selectFilter(choice: Ichoice) {
-        if (filter === choice.id) return setFilter(null)
-        return setFilter(choice.id)
-    }
+	function selectFilter(choice: Ichoice) {
+		if (filter === choice.id) return setFilter(null);
+		return setFilter(choice.id);
+	}
 
-    return <div className={styles.filters}>
-        {filters.map((choice) => (
-            <button 
-                className={classNames({
-                    [styles.filters__filter]: true,
-                    [styles["filters__filter--active"]]: filter === choice.id
-                })}
-                key={choice.id}
-                onClick={() => selectFilter(choice)}>
+	return <div className={styles.filters}>
+		{filters.map((choice) => (
+			<button 
+				className={classNames({
+					[styles.filters__filter]: true,
+					[styles['filters__filter--active']]: filter === choice.id
+				})}
+				key={choice.id}
+				onClick={() => selectFilter(choice)}>
                     
-                {choice.label}
-            </button>
-        ))}
-    </div>
+				{choice.label}
+			</button>
+		))}
+	</div>;
 }
