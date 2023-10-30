@@ -1,18 +1,18 @@
-import items from './items.json';
+import items from 'data/menu.json';
 import Item from './Item';
 import styles from './Items.module.scss';
 import { useEffect, useState } from 'react';
 
 interface Props {
-    search: string,
-    filter: number | null,
-    computer: string
+	search: string,
+	filter: number | null,
+	computer: string
 }
 
-export default function Items(props : Props) {
+export default function Items(props: Props) {
 
 	const [list, setList] = useState(items);
-	const {search, filter, computer} = props;
+	const { search, filter, computer } = props;
 
 	function testSearch(title: string) {
 		const regex = new RegExp(search, 'i');
@@ -20,19 +20,18 @@ export default function Items(props : Props) {
 	}
 
 	function testFilter(id: number) {
-		if(filter !== null)
+		if (filter !== null)
 			return filter === id;
 		return true;
 	}
 
 	function sortList(list: typeof items, property: 'size' | 'serving' | 'price') {
-		return list.sort((a, b) => a[property] > b[property] ? 1 : -1); 
+		return list.sort((a, b) => a[property] > b[property] ? 1 : -1);
 	}
 
 	function rank(list: typeof items) {
 
-		switch(computer) {
-
+		switch (computer) {
 		case 'porcao': return sortList(list, 'size');
 		case 'qtd_pessoas': return sortList(list, 'serving');
 		case 'preco': return sortList(list, 'price');
@@ -45,10 +44,10 @@ export default function Items(props : Props) {
 		setList(rank(newList));
 	}, [search, filter, computer]);
 
-	return(
+	return (
 		<div className={styles.items}>
 			{list.map(item => (
-				<Item key={item.id} {...item}/>
+				<Item key={item.id} {...item} />
 			))}
 		</div>
 	);
