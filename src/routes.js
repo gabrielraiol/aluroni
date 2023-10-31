@@ -3,11 +3,13 @@ import Template from 'components/Template';
 import About from 'pages/About';
 import Home from 'pages/Home';
 import Menu from 'pages/Menu';
+import Footer from 'components/Footer';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import NotFound from 'pages/NotFound';
 
 export default function AppRouter() {
     return (
-        <main>
+        <main className='container'>
             <Router>
                 <MenuM/>
                 <Routes>
@@ -16,7 +18,9 @@ export default function AppRouter() {
                         <Route path='menu' element={<Menu/>}/>
                         <Route path='about' element={<About/>}/>
                     </Route>
+                    <Route path='*' element={<NotFound/>}/>
                 </Routes>
+                <Footer/>
             </Router>
         </main>
     );
