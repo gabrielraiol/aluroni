@@ -8,17 +8,17 @@ interface Props {
 }
 
 export default function Finder({search, setSearch}: Props) {
-	return <div className={styles.finder}>
-		<input
-			value={search}
-			onChange={(event) =>
-				setSearch (event.target.value)
-			}
-			placeholder="Buscar"
-		/>
-		< CgSearch
-			size={20}
-			color="#4D4C5E"
-		/>
-	</div>;
+    return <div className={styles.finder}>
+        <input
+            value={search}
+            onChange={(event) =>
+                setSearch (event.target.value)
+            }
+            placeholder="Buscar"
+        />
+        < CgSearch
+            size={20}
+            color="#4D4C5E"
+        />
+    </div>;
 }
