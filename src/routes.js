@@ -6,6 +6,7 @@ import Menu from 'pages/Menu';
 import Footer from 'components/Footer';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import NotFound from 'pages/NotFound';
+import Dish from 'pages/Dish';
 
 export default function AppRouter() {
     return (
@@ -19,6 +20,7 @@ export default function AppRouter() {
                         <Route path='about' element={<About/>}/>
                     </Route>
                     <Route path='*' element={<NotFound/>}/>
+                    <Route path='dish/:id' element={<Dish/>}/>
                 </Routes>
                 <Footer/>
             </Router>
