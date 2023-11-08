@@ -1,15 +1,21 @@
-import classNames from 'classnames';
 import styles from './Dish.module.scss';
-import { useLocation } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import menu from 'data/menu.json';
+import DishTags from 'components/DishTags';
 
 export default function Dish() {
 
-    const {state} = useLocation();
-    const {dish} = state;
+    const {id} = useParams();
+    const navigate = useNavigate();
+    const dish = menu.find(item => item.id === Number(id));
     
+    if(!dish){
+        return '';
+    }
+
     return (
         <>
-            <button className={styles.backward}>
+            <button className={styles.backward} onClick={() => navigate(-1)}>
                 {'< Voltar'}
             </button>
             <section className={styles.container}>
@@ -26,26 +32,7 @@ export default function Dish() {
                     <p className={styles.content__description}>
                         {dish.description}
                     </p>
-
-                    <div className={styles.tags}>
-
-                        <div className={classNames()}>
-                            {dish.category.label}
-                        </div>
-
-                        <div className={styles.tags__portion}>
-                            {dish.size}g
-                        </div>
-
-                        <div className={styles.tags__qtdpeople}>
-                                Serve {dish.serving} pessoa{dish.serving == 1 ? '' : 's'}
-                        </div>
-
-                        <div className={styles.tags__price}>
-                            R$ {dish.price.toFixed(2)}
-                        </div>
-
-                    </div>
+                    <DishTags {...dish}/>
                 </div>
             </section>
         </>
